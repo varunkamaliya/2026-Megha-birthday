@@ -1056,7 +1056,7 @@
   // ── INTRO ──
   function enterSite() {
     document.getElementById('intro').classList.add('hidden');
-    document.getElementById('heroDate').textContent = `♦ — ${new Date().toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'})} — ♦`;
+    document.getElementById('heroDate').textContent = `♦ — April 23, ${new Date().getFullYear()} — ♦`;
     setTimeout(startCountdown, 1000);
     setTimeout(() => {
       document.getElementById('balloons').classList.add('risen');
@@ -1087,34 +1087,6 @@
       document.getElementById('musicLabel').textContent = 'Play Music';
       document.getElementById('musicWaves').classList.remove('active');
     }
-  }
-
-  // ── COUNTDOWN ──
-  function startCountdown() {
-    function tick() {
-      const now = new Date();
-      const bd = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1); // tomorrow = birthday
-      // Adjust birthday: set to today for demonstration (or set manually below)
-      // To set actual birthday: const bd = new Date(now.getFullYear(), 11, 25); // Dec 25
-      const diff = bd - now;
-      if (diff <= 0) {
-        document.getElementById('cd-days').textContent = '00';
-        document.getElementById('cd-hours').textContent = '00';
-        document.getElementById('cd-mins').textContent = '00';
-        document.getElementById('cd-secs').textContent = '00';
-        return;
-      }
-      const days = Math.floor(diff / 86400000);
-      const hrs = Math.floor((diff % 86400000) / 3600000);
-      const mins = Math.floor((diff % 3600000) / 60000);
-      const secs = Math.floor((diff % 60000) / 1000);
-      document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
-      document.getElementById('cd-hours').textContent = String(hrs).padStart(2,'0');
-      document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
-      document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
-    }
-    tick();
-    setInterval(tick, 1000);
   }
 
   // ── SCROLL ANIMATIONS ──
